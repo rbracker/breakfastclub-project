@@ -23,9 +23,17 @@ body {
 .test {
     height: 600px;
     width: 600px;
-    background-color: blue;
+    background-color: grey;
 }
 main {
     display: inline-block;
     width: 75%;
+}
+
+#testContent strong {
+    font-weight: bold;
+}
+
+#testContent {
+    color: #363636;
 }
