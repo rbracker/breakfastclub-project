@@ -18,8 +18,9 @@
         <div class="joke is-flex">
             <div class="box is-narrow" style="width: 200px;">
              <p>
-                Please click for a joke
+                <button onclick="fetchJoke()">Please click for a joke</button>
              </p>
+             <p id="jokeText"></p>
             </div>
         </div>
     </div>
@@ -28,17 +29,16 @@
         <div class="tips is-flex">
             <div class="box is-narrow" style="width: 200px">
               <p>
-                Today's tip
+                <button onclick="fetchTip()">Today's tip</button>
               </p>
+              <p id="tipText"></p>
             </div>
         </div>
     </div>
     </header>
     <main>
-        <div class="test">
-            <p> 
-                style. bootcamp. 
-            </p>
+        <div class="test"> 
+            <p id="testContent"></p>
         </div>
     </main>
     <aside class="side">
