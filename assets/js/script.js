@@ -2,6 +2,8 @@ var jokeBtn = document.querySelector(".joke");
 var tipBtn = document.querySelector(".tips");
 var jokeFetched = false;
 var tipFetched = false;
+var jokeSaveBtn = document.querySelector(".saveJokeBtn");
+var tipSaveBtn = document.querySelector(".saveTipBtn");
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -14,6 +16,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+jokeSaveBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    var jokeResult = document.querySelector("#jokeContent").innerHTML;
+
+    localStorage.setItem("joke", jokeResult);
+});
+
+tipSaveBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    var tipResult = document.querySelector("#tipContent").innerHTML;
+    
+    localStorage.setItem("tip", tipResult);
+});
 
 
 function updateJokeContent(content){
