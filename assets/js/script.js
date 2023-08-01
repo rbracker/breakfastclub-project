@@ -1,3 +1,9 @@
+var jokeBtn = document.querySelector(".joke");
+var tipBtn = document.querySelector(".tips");
+var jokeFetched = false;
+var tipFetched = false;
+
+
 document.addEventListener("DOMContentLoaded", function () {
     var currentDate = new Date();
     var options = { month: "long", day: "numeric", year: "numeric" };
@@ -5,28 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("currentDay").textContent = formattedDate;
 
-    var jokeFetched = false;
-    var tipFetched = false;
 
-    document.querySelector(".joke").addEventListener("click", function () {
-        if (!jokeFetched) {
-            fetchJoke();
-            jokeFetched = true;
-        }
-    });
-
-    document.querySelector(".tips").addEventListener("click", function () {
-        if (!tipFetched) {
-            fetchTip();
-            tipFetched = true;
-        }
-    });
 });
 
-function updateTestContent(content) {
-    var testElement = document.getElementById("testContent");
-    testElement.innerHTML = content;
-}
+
+
+function updateJokeContent(content){
+    var jokeText = document.getElementById("jokeContent")
+    jokeText.innerHTML = content; 
+};
+
+function updateTipContent(contentTwo){
+    var tipText = document.getElementById("tipContent")
+    tipText.innerHTML = contentTwo;
+};
 
 function fetchJoke() {
     fetch("https://official-joke-api.appspot.com/random_joke")
@@ -36,7 +34,7 @@ function fetchJoke() {
         
         .then(function (data) {
             var joke = "<strong>Setup:</strong> " + data.setup + "<br><strong>Punchline:</strong> " + data.punchline;
-            updateTestContent(joke);
+            updateJokeContent(joke);
         })
         
         .catch(function (error) {
@@ -52,10 +50,25 @@ function fetchTip() {
         
         .then(function (data) {
             var tip = "<strong>Today's tip:</strong> " + data.slip.advice;
-            updateTestContent(tip);
+            updateTipContent(tip);
         })
         
         .catch(function (error) {
             console.log("Error fetching tip:", error);
         });
 }
+
+jokeBtn.addEventListener("click", function () {
+    if (!jokeFetched) {
+        fetchJoke();
+        jokeFetched = true;
+    }
+});
+
+tipBtn.addEventListener("click", function () {
+    if (!tipFetched) {
+        fetchTip();
+        tipFetched = true;
+    }
+});
+
